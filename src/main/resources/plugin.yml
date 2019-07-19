@@ -1,0 +1,18 @@
+name: "Box"
+main: "com.mewna.mc.box.Box"
+version: "0.0.1"
+description: "A box of secrets and surprises!"
+depend:
+- "Vault"
+authors:
+- "amy"
+website: "https://amy.gg/"
+api-version: "1.13"
+
+permissions:
+  box.shop.create:
+    default: op
+    description: "Allows the player to create admin signshops"
+  box.eco.bal:
+    default: op
+    description: "Allows the player to check their balance"

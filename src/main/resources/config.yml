@@ -1,0 +1,425 @@
+#
+#     .___      __   .__               __
+#   __| _/____ |  | _|__| ____   ____ |  | _____________  ____
+#  / __ |/ __ \|  |/ /  |/ ___\ /  _ \|  |/ /  _ \_  __ \/  _ \
+# / /_/ \  ___/|    <|  / /_/  >  <_> )    <  <_> )  | \(  <_> )
+# \____ |\___  >__|_ \__\___  / \____/|__|_ \____/|__|   \____/
+#      \/    \/     \/ /_____/             \/
+#
+# Check out https://dekigokoro.io to learn what this is and get an API key
+dekigokoro:
+  api-key: ""
+
+#
+# ___________
+# \_   _____/ ____  ____   ____   ____   _____ ___.__.
+#  |    __)__/ ___\/  _ \ /    \ /  _ \ /     <   |  |
+#  |        \  \__(  <_> )   |  (  <_> )  Y Y  \___  |
+# /_______  /\___  >____/|___|  /\____/|__|_|  / ____|
+#         \/     \/           \/             \/\/
+#
+economy:
+  name: "mewnaconomy"
+  currency:
+    name:
+      singular: "$"
+      plural: "$"
+
+#
+# ___________                    .__
+# \__    ___/___________    _____|  |__   ____ _____    ____
+#   |    |  \_  __ \__  \  /  ___/  |  \_/ ___\\__  \  /    \
+#   |    |   |  | \// __ \_\___ \|   Y  \  \___ / __ \|   |  \
+#   |____|   |__|  (____  /____  >___|  /\___  >____  /___|  /
+#                       \/     \/     \/     \/     \/     \/
+#
+trashcan:
+  name: '&cTrashcan'
+  size: 54
+  close-button:
+    material: IRON_FENCE
+    name: '&c&lEmpty'
+    desc: '&cEmpties the trash'
+
+#
+#   _________.__                      ________ ____ ___.___
+#  /   _____/|  |__   ____ ______    /  _____/|    |   \   |
+#  \_____  \ |  |  \ /  _ \\____ \  /   \  ___|    |   /   |
+#  /        \|   Y  (  <_> )  |_> > \    \_\  \    |  /|   |
+# /_______  /|___|  /\____/|   __/   \______  /______/ |___|
+#         \/      \/       |__|             \/
+#
+shop:
+  # Shop GUI config
+  gui:
+    name: '&aShop'
+  messages:
+    buy-success: '&8[&a!&8] &7You bought &a%number% %item% &7for $&a%cost%&7.'
+    buy-fail: "&8[&c!&8] &7You don't have enough to buy &c%number% %item%&7!"
+    sell-success: '&8[&a!&8] &7You sold &a%number% %item% &7for $&a%cost%&7.'
+    sell-fail: "&8[&c!&8] &7You don't have &c%item% &7to sell!"
+  prices:
+    grass:
+      name: Grass Block
+      buy: 17.00
+      sell: 1.00
+    dirt:
+      name: Dirt
+      buy: 1.00
+      sell: 1.00
+    stone:
+      name: Stone
+      buy: 2.00
+      sell: 1.00
+    cobble:
+      name: Cobble
+      buy: 2.00
+      sell: 1.00
+    mossycobblestone:
+      name: Mossy Cobble
+      buy: 25.00
+      sell: 4.00
+    stonebricks:
+      name: Stone Bricks
+      buy: 8.00
+      sell: 3.00
+    mossystonebricks:
+      name: Mossy Bricks
+      buy: 10.00
+      sell: 3.00
+    crackedstonebricks:
+      name: Cracked Bricks
+      buy: 10.00
+      sell: 3.00
+    chiseledstonebricks:
+      name: Chiseled Bricks
+      buy: 10.00
+      sell: 3.00
+    sand:
+      name: Sand
+      buy: 7.00
+      sell: 1.00
+    sandstone:
+      name: Sandstone
+      buy: 10.00
+      sell: 3.00
+    chiseledsandstone:
+      name: Chiseled Sandstone
+      buy: 10.00
+      sell: 3.00
+    smoothsandstone:
+      name: Smooth Sandstone
+      buy: 10.00
+      sell: 3.00
+    gravel:
+      name: Gravel
+      buy: 3.00
+      sell: 1.00
+    quartzblock:
+      name: Quartz Block
+      buy: 100.00
+      sell: 25.00
+    chiseledquartzblock:
+      name: Chiseled Quartz
+      buy: 125.00
+      sell: 25.00
+    pillarquartzblock:
+      name: Pillar Quartz
+      buy: 125.00
+      sell: 25.00
+    oaklog:
+      name: Oak Log
+      buy: 25.00
+      sell: 6.25
+    sprucelog:
+      name: Spruce Log
+      buy: 25.00
+      sell: 6.25
+    birchlog:
+      name: Birch Log
+      buy: 25.00
+      sell: 6.25
+    junglelog:
+      name: Jungle Log
+      buy: 25.00
+      sell: 6.25
+    acacialog:
+      name: Acacia Log
+      buy: 25.00
+      sell: 6.25
+    darkoaklog:
+      name: Dark Oak Log
+      buy: 25.00
+      sell: 6.25
+    oakplank:
+      name: Oak Plank
+      buy: 6.25
+      sell: 1.56
+    spruceplank:
+      name: Spruce Plank
+      buy: 6.25
+      sell: 1.56
+    birchplank:
+      name: Birch Plank
+      buy: 6.25
+      sell: 1.56
+    jungleplank:
+      name: Jungle Plank
+      buy: 6.25
+      sell: 1.56
+    acaciaplank:
+      name: Acacia Plank
+      buy: 6.25
+      sell: 1.56
+    darkoakplank:
+      name: Dark Oak Plank
+      buy: 6.25
+      sell: 1.56
+    glass:
+      name: Glass
+      buy: 10.00
+      sell: 3.00
+    clay:
+      name: Clay
+      buy: 11.00
+      sell: 3.00
+    dispenser:
+      name: Dispenser
+      buy: 39.00
+      sell: 4.00
+    noteblock:
+      name: Note Block
+      buy: 32.00
+      sell: 5.00
+    stickypiston:
+      name: Sticky Piston
+      buy: 500.00
+      sell: 100.00
+    piston:
+      name: Piston
+      buy: 125.00
+      sell: 25.00
+    tnt:
+      name: TNT
+      buy: 45.00
+      sell: 22.00
+    dropper:
+      name: Dropper
+      buy: 38.00
+      sell: 4.00
+    redstonelamp:
+      name: Redstone Lamp
+      buy: 45.00
+      sell: 10.00
+    redstoneblock:
+      name: Redstone Block
+      buy: 45.00
+      sell: 5.00
+    redstone:
+      name: Redstone
+      buy: 5.00
+      sell: 0.56
+    redstonerepeater:
+      name: Repeater
+      buy: 39.00
+      sell: 4.00
+    redstonecomparator:
+      name: Comparator
+      buy: 40.00
+      sell: 4.00
+    hopper:
+      name: Hopper
+      buy: 800.00
+      sell: 0.00
+    redstonetorch:
+      name: Redstone Torch
+      buy: 6.00
+      sell: 1.00
+    blazerod:
+      name: Blaze Rod
+      buy: 280.00
+      sell: 30.00
+    ghasttear:
+      name: Ghast Tear
+      buy: 250.00
+      sell: 12.00
+    spidereye:
+      name: Spider Eye
+      buy: 115.00
+      sell: 2.00
+    netherwart:
+      name: Netherwart
+      buy: 900.00
+      sell: 8.00
+    magmacream:
+      name: Magma Cream
+      buy: 148.00
+      sell: 4.00
+    glisteringmelonslice:
+      name: Glistering Melon
+      buy: 180.00
+      sell: 18.00
+    glowstonedust:
+      name: Glowstone Dust
+      buy: 25.00
+      sell: 3.00
+    goldencarrot:
+      name: Golden Carrot
+      buy: 480.00
+      sell: 15.00
+    coal:
+      name: Coal
+      buy: 22.00
+      sell: 2.00
+    ironingot:
+      name: Iron Ingot
+      buy: 105.00
+      sell: 10.00
+    goldingot:
+      name: Gold Ingot
+      buy: 135.00
+      sell: 12.00
+    emerald:
+      name: Emerald
+      buy: 750.00
+      sell: 70.00
+    diamond:
+      name: Diamond
+      buy: 375.00
+      sell: 38.00
+    rawchicken:
+      name: Raw Chicken
+      buy: 9.00
+      sell: 2.00
+    rawpork:
+      name: Raw Pork
+      buy: 9.00
+      sell: 3.00
+    rawsteak:
+      name: Raw Steak
+      buy: 10.00
+      sell: 3.00
+    rawfish:
+      name: Raw Fish
+      buy: 15.00
+      sell: 7.00
+    rawsalmon:
+      name: Raw Salmon
+      buy: 15.00
+      sell: 8.00
+    clownfish:
+      name: Clownfish
+      buy: 25.00
+      sell: 10.00
+    pufferfish:
+      name: Pufferfish
+      buy: 30.00
+      sell: 10.00
+    witchspawner:
+      name: Witch Spawner
+      buy: 675,000.00
+      sell: 0.00
+    pigspawner:
+      name: Pig Spawner
+      buy: 160,000.00
+      sell: 0.00
+    horsespawner:
+      name: Horse Spawner
+      buy: 150,000.00
+      sell: 0.00
+    creeperspawner:
+      name: Creeper Spawner
+      buy: 700,000.00
+      sell: 0.00
+    ocelotspawner:
+      name: Ocelot Spawner
+      buy: 90,000.00
+      sell: 0.00
+    villagerspawner:
+      name: Villager Spawner
+      buy: 465,000.00
+      sell: 0.00
+    sheepspawner:
+      name: Sheep Spawner
+      buy: 85,000.00
+      sell: 0.00
+    pigzombiespawner:
+      name: Pig Zombie Spawner
+      buy: 850,000.00
+      sell: 0.00
+    mooshroomspawner:
+      name: Mooshroom Spawner
+      buy: 480,000.00
+      sell: 0.00
+    irongolemspawner:
+      name: Iron Golem Spawner
+      buy: 1,250,000.00
+      sell: 0.00
+    skeletonspawner:
+      name: Skeleton Spawner
+      buy: 85,000.00
+      sell: 0.00
+    zombiespawner:
+      name: Zombie Spawner
+      buy: 95,000.00
+      sell: 0.00
+    slimespawner:
+      name: Slime Spawner
+      buy: 275,000.00
+      sell: 0.00
+    magmacubespawner:
+      name: Magma Cube Spawner
+      buy: 290,000.00
+      sell: 0.00
+    chickenspawner:
+      name: Chicken Spawner
+      buy: 305,000.00
+      sell: 0.00
+    spiderspawner:
+      name: Spiderspawner
+      buy: 120,000.00
+      sell: 0.00
+    cavespiderspawner:
+      name: Cave Spider Spawner
+      buy: 137,500.00
+      sell: 0.00
+    endermanspawner:
+      name: Enderman Spawner
+      buy: 750,000.00
+      sell: 0.00
+    blazespawner:
+      name: Blaze Spawner
+      buy: 250,000.00
+      sell: 0.00
+    pumpkinseeds:
+      name: Pumpkin Seeds
+      buy: 50.00
+      sell: 15.00
+    pumpkin:
+      name: Pumpkin
+      buy: 200.00
+      sell: 60.00
+    wheat:
+      name: Wheat
+      buy: 30.00
+      sell: 1.00
+    sugarcane:
+      name: Sugarcane
+      buy: 300.00
+      sell: 1.00
+    cactus:
+      name: Cactus
+      buy: 300.00
+      sell: 6.00
+    carrot:
+      name: Carrot
+      buy: 300.00
+      sell: 2.00
+    potato:
+      name: Potato
+      buy: 300.00
+      sell: 2.00
+    melon:
+      name: Melon
+      buy: 50.00
+      sell: 1.00
