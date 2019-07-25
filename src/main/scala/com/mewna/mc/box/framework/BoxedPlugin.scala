@@ -161,7 +161,7 @@ private class BoxedPlugin {
         if(component.isDefined) {
           f.set(obj, component.get)
         } else {
-          // TODO: How to log that we couldn't find a matching component?
+          throw new IllegalArgumentException(f"Couldn't find component matching type ${t.getName}")
         }
       }
     })
