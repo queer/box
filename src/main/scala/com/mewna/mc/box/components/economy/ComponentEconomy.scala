@@ -15,12 +15,16 @@ import org.bukkit.plugin.ServicePriority
 @Single
 @Component
 class ComponentEconomy extends BoxedComponent {
+  //noinspection VarCouldBeVal
   @Config("dekigokoro.api-key")
   private[this] var _key: String = _
+  //noinspection VarCouldBeVal
   @Config("economy.name")
   private[this] var _economyName: String = _
+  //noinspection VarCouldBeVal
   @Config("economy.currency.name.singular")
   private[this] var _currencyNameSingular: String = _
+  //noinspection VarCouldBeVal
   @Config("economy.currency.name.plural")
   private[this] var _currencyNamePlural: String = _
   

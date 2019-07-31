@@ -17,14 +17,19 @@ import scala.collection.mutable
 @Single
 @Component
 class ComponentShop extends BoxedComponent {
+  //noinspection VarCouldBeVal
   @Config("shop.messages.buy-success")
   private[this] var _buySuccessMessage: String = _
+  //noinspection VarCouldBeVal
   @Config("shop.messages.buy-fail")
   private[this] var _buyFailMessage: String = _
+  //noinspection VarCouldBeVal
   @Config("shop.messages.sell-success")
   private[this] var _sellSuccessMessage: String = _
+  //noinspection VarCouldBeVal
   @Config("shop.messages.sell-fail")
   private[this] var _sellFailMessage: String = _
+  //noinspection VarCouldBeVal
   @Config("shop.gui.name")
   private[this] var _shopGuiName: String = _
   val shopitemMap: mutable.Map[String, ShopItem] = mutable.Map[String, ShopItem]()

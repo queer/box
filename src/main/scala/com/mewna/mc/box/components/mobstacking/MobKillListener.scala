@@ -28,6 +28,7 @@ class MobKillListener extends Listener {
           clone.setCustomNameVisible(true)
         } else {
           // Hide the name if there's only 1 entity left in the stack
+          //noinspection ScalaStyle
           clone.setCustomName(null)
           clone.setCustomNameVisible(false)
         }

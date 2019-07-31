@@ -12,8 +12,10 @@ import org.bukkit.entity.Player
  */
 @Command(name = "test", permissionNode = "box.test")
 class CommandTest {
+  //noinspection VarCouldBeVal
   @Auto
   private var sender: CommandSender = _
+  //noinspection VarCouldBeVal
   @Auto
   private var player: Player = _
   

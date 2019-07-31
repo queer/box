@@ -16,7 +16,10 @@ object EnumUtil {
     for(name <- names) {
       try {
         val enumField = enumClass.getDeclaredField(name)
-        if(enumField.isEnumConstant) return Option[T](enumField.get(null).asInstanceOf[T])
+        if(enumField.isEnumConstant) {
+          //noinspection ScalaStyle
+          return Option[T](enumField.get(null).asInstanceOf[T])
+        }
       } catch {
         case _@(_: NoSuchFieldException | _: IllegalAccessException) =>
       }
@@ -29,7 +32,10 @@ object EnumUtil {
     for(name <- names) {
       try {
         val enumField = enumClass.getDeclaredField(name)
-        if(enumField.isEnumConstant) set.add(enumField.get(null).asInstanceOf[T])
+        if(enumField.isEnumConstant) {
+          //noinspection ScalaStyle
+          set.add(enumField.get(null).asInstanceOf[T])
+        }
       } catch {
         case _@(_: NoSuchFieldException | _: IllegalAccessException) =>
         
