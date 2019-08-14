@@ -77,9 +77,9 @@ class ShopGui(override val plugin: Box, val shop: ComponentShop, val itemName: S
     if(button.id < 7) {
       val size = Math.pow(2, button.id).toInt
       val price = shopItem.get.buyPrice
-      val balance = /*plugin.*/economy.getBalance(player)
+      val balance = economy.getBalance(player)
       if(balance >= price) {
-        val economyResponse = /*plugin.*/economy.withdrawPlayer(player, price)
+        val economyResponse = economy.withdrawPlayer(player, price)
         
         economyResponse.`type` match {
           case ResponseType.NOT_IMPLEMENTED | ResponseType.FAILURE =>
