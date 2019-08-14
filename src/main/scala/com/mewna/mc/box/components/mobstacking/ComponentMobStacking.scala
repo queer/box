@@ -42,10 +42,14 @@ class ComponentMobStacking extends BoxedComponent {
         // Don't get a pile of villagers either.
         // Villager trades are too nice to risk like that
         || entity.isInstanceOf[Villager]
+        // Parrot tame state is problematic. 
+        || entity.isInstanceOf[Parrot]
         // Wolf tame state is problematic.
         || entity.isInstanceOf[Wolf]
         // Horse saddles and inventories also become a problem.
         || entity.isInstanceOf[Horse]
+        // Llamas also have inventories. 
+        || entity.isInstanceOf[Llama]
       )
   }
   
