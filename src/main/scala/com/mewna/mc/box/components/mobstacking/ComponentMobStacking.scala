@@ -3,6 +3,7 @@ package com.mewna.mc.box.components.mobstacking
 import com.mewna.mc.box.BoxPlugin
 import com.mewna.mc.box.framework.component.{BoxedComponent, Component, Single}
 import org.bukkit.entity._
+import org.bukkit.inventory.InventoryHolder
 import org.bukkit.material.Colorable
 import org.bukkit.{ChatColor, World}
 
