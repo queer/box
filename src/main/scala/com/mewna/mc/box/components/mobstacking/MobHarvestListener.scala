@@ -66,7 +66,7 @@ class MobHarvestListener extends Listener {
     // TODO Add checking for armour to generalise this method
     if(r.nextInt(100) < unbreakingCalculation) { // "magic number reeee"
       // If the unbreakingCalculation is higher than the random number, the "unbreaking check" failed
-      item.getItemMeta.asInstanceOf[Damageable].setDamage(item.getDamage - 1)
+      item.getItemMeta.asInstanceOf[Damageable].setDamage(item.getDamage + 1)
     }
   }
 }
