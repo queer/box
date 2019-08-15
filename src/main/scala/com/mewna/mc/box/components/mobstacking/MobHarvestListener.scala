@@ -47,24 +47,26 @@ class MobHarvestListener extends Listener {
       val inventory = event.getPlayer.getInventory
       val item = if (event.getHand == EquipmentSlot.HAND) {
         inventory.getItemInMainHand
-      } else { inventory.getItemInOffHand }
+      } else {
+        inventory.getItemInOffHand
+      }
       if(item.getType == Material.SHEARS) {
         val le = entity.asInstanceOf[LivingEntity]
-        for(_ <- 2 until component.count(le))
+        for(_ <- 2 to component.count(le))
           // We don't apply damage on the first shear since the game takes care of that.
           applyDamage(item, 1)
       }
     }
   }
-  //noinspection ScalaStyle
-  def applyDamage[T<: ItemStack with Damageable](item: T, damage: Int): Unit = {
+
+  def applyDamage[T <: ItemStack with Damageable](item: T, damage: Int): Unit = {
     // Applies damage to a given ItemStack, factoring in the Unbreaking enchantment
     val unbreakingLevel = item.getEnchantmentLevel(Enchantment.DURABILITY)
     val r = new Random()
     // Formula taken from https://minecraft.gamepedia.com/Unbreaking
-    val unbreakingCalculation = (100 / (unbreakingLevel + 1))
-    // TODO Add checking for armour to generalise this method
-    if(r.nextInt(100) < unbreakingCalculation) { // "magic number reeee"
+    val unbreakingCalculation = 100 / (unbreakingLevel + 1)
+    //noinspection ScalaStyle
+    if(r.nextInt(100) < unbreakingCalculation) {
       // If the unbreakingCalculation is higher than the random number, the "unbreaking check" failed
       item.getItemMeta.asInstanceOf[Damageable].setDamage(item.getDamage - 1)
     }
