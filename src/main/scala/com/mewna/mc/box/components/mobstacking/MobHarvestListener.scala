@@ -68,7 +68,7 @@ class MobHarvestListener extends Listener {
     //noinspection ScalaStyle
     if(r.nextInt(100) < unbreakingCalculation) {
       // If the unbreakingCalculation is higher than the random number, the "unbreaking check" failed
-      item.getItemMeta.asInstanceOf[Damageable].setDamage(item.getDamage - 1)
+      item.getItemMeta.asInstanceOf[Damageable].setDamage(item.getDamage + 1)
     }
   }
 }
