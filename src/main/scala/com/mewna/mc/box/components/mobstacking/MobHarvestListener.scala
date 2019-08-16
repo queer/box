@@ -56,13 +56,11 @@ class MobHarvestListener extends Listener {
       if(item.getType == Material.SHEARS) {
         logger.info("Material is a shears")
         val le = entity.asInstanceOf[LivingEntity]
-        if(item.getItemMeta.isInstanceOf[Damageable]) {
-          logger.info("Item is instance of Damageable")
-          for(_ <- 2 to component.count(le)) {
-            // We don't apply damage on the first shear since the game takes care of that.
-            val newItemMeta: ItemMeta = applyDamage(item.asInstanceOf[ItemStack with Damageable], 1)
-            item.setItemMeta(newItemMeta)
-          }
+        logger.info("Item is instance of Damageable")
+        for(_ <- 2 to component.count(le)) {
+          // We don't apply damage on the first shear since the game takes care of that.
+          val newItemMeta: ItemMeta = applyDamage(item.asInstanceOf[ItemStack with Damageable], 1)
+          item.setItemMeta(newItemMeta)
         }
       }
     }
@@ -73,7 +71,6 @@ class MobHarvestListener extends Listener {
 
     //noinspection ScalaStyle
     var itemAsDamageable: Damageable = null
-    logger.info("Attempting to apply damage!")
     val unbreakingLevel = item.getEnchantmentLevel(Enchantment.DURABILITY)
     val r = new Random()
     // Formula taken from https://minecraft.gamepedia.com/Unbreaking
@@ -81,14 +78,8 @@ class MobHarvestListener extends Listener {
     //noinspection ScalaStyle
     if(r.nextInt(100) < unbreakingCalculation) {
       // If the unbreakingCalculation is higher than the random number, the "unbreaking check" failed
-      logger.info("Applying damage!")
       itemAsDamageable = item.getItemMeta.asInstanceOf[Damageable]
-      logger.info(s"Current item damage is ${itemAsDamageable.getDamage}")
       itemAsDamageable.setDamage(itemAsDamageable.getDamage + 1)
-      logger.info(s"New item damage is ${itemAsDamageable.getDamage}")
-
-    } else {
-      logger.info("Unbreaking enchantment prevented item damage!")
     }
     itemAsDamageable.asInstanceOf[ItemMeta]
   }
