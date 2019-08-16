@@ -1,9 +1,12 @@
 package com.mewna.mc.box.components.mobstacking
 
+import java.util
+
 import com.mewna.mc.box.framework.di.Auto
 import org.bukkit.entity.LivingEntity
 import org.bukkit.event.{EventHandler, Listener}
 import org.bukkit.event.entity.EntityDeathEvent
+import org.bukkit.potion.PotionEffect
 
 /**
  * @author amy
@@ -17,11 +20,13 @@ class MobKillListener extends Listener {
   @EventHandler
   def onKill(event: EntityDeathEvent): Unit = {
     val entity = event.getEntity
+    val effects: util.Collection[PotionEffect] = entity.getActivePotionEffects
     if(component.isStackable(entity)) {
       val count = component.count(entity)
       if(count > 1) {
         val next = count - 1
         val clone = entity.getWorld.spawnEntity(entity.getLocation, entity.getType).asInstanceOf[LivingEntity]
+        clone.addPotionEffects(effects)
         if(next > 1) {
           // Update the stack's name if needed
           clone.setCustomName(f"${component.colour}$next")
