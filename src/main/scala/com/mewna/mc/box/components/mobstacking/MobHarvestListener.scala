@@ -52,9 +52,12 @@ class MobHarvestListener extends Listener {
       }
       if(item.getType == Material.SHEARS) {
         val le = entity.asInstanceOf[LivingEntity]
-        for(_ <- 2 to component.count(le))
-          // We don't apply damage on the first shear since the game takes care of that.
-          applyDamage(item, 1)
+        if(item.isInstanceOf[Damageable]) {
+          for(_ <- 2 to component.count(le)) {
+            // We don't apply damage on the first shear since the game takes care of that.
+            applyDamage(item.asInstanceOf[ItemStack with Damageable], 1)
+          }
+        }
       }
     }
   }
