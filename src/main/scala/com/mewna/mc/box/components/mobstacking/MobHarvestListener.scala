@@ -54,9 +54,7 @@ class MobHarvestListener extends Listener {
         inventory.getItemInOffHand
       }
       if(item.getType == Material.SHEARS) {
-        logger.info("Material is a shears")
         val le = entity.asInstanceOf[LivingEntity]
-        logger.info("Item is instance of Damageable")
         for(_ <- 2 to component.count(le)) {
           // We don't apply damage on the first shear since the game takes care of that.
           val newItemMeta: ItemMeta = applyDamage(item.asInstanceOf[ItemStack with Damageable], 1)
