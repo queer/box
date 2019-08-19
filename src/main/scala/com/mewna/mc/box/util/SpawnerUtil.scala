@@ -15,7 +15,7 @@ import org.bukkit.inventory.meta.BlockStateMeta
  * @since 7/9/19.
  */
 object SpawnerUtil {
-  private val ENTITY_TO_DISPLAY_NAME: Map[EntityType, String] = Map(
+  private val EntityToDisplayName: Map[EntityType, String] = Map(
     (EntityType.CAVE_SPIDER, "Cave Spider"),
     (EntityType.PIG_ZOMBIE, "Zombie Pigman"),
     (EntityType.MAGMA_CUBE, "Magma Cube"),
@@ -27,27 +27,36 @@ object SpawnerUtil {
     (EntityType.WITHER, "Wither"),
     (EntityType.HORSE, "Horse")
   )
-  
-  def setEntityType(is: ItemStack, `type`: EntityType): ItemStack = {
-    
-    val bsm = is.getItemMeta.asInstanceOf[BlockStateMeta]
-    val bs = bsm.getBlockState
-    bs.asInstanceOf[CreatureSpawner].setSpawnedType(`type`)
-    bsm.setBlockState(bs)
-    is.setItemMeta(bsm)
-    setDisplayName(is, `type`)
-  }
+
+  def setEntityType(is: ItemStack, `type`: EntityType): ItemStack =
+    is.getItemMeta match {
+      case bsm: BlockStateMeta =>
+        val bs = bsm.getBlockState
+        bs match {
+          case x: CreatureSpawner => x.setSpawnedType(`type`)
+          case _ => // Ignore
+        }
+        bsm.setBlockState(bs)
+        is.setItemMeta(bsm)
+        setDisplayName(is, `type`)
+      case _ => null // ignore, can never get here. Just pattern matching for safety over casting.
+    }
   
   def getEntityType(is: ItemStack): EntityType = {
-    val bsm = is.getItemMeta.asInstanceOf[BlockStateMeta]
-    val bs = bsm.getBlockState.asInstanceOf[CreatureSpawner]
-    bs.getSpawnedType
+    is.getItemMeta match {
+      case bsm: BlockStateMeta =>
+        bsm.getBlockState match {
+          case bs: CreatureSpawner => bs.getSpawnedType
+          case _ => null // ignore, can never get here. Just pattern matching for safety over casting.
+        }
+      case _ => null // ignore, can never get here. Just pattern matching for safety over casting.
+    }
   }
   
   private def setDisplayName(is: ItemStack, `type`: EntityType) = {
     val meta = is.getItemMeta
     // TODO: How to resolve this deprecation warning?
-    val displayName = ENTITY_TO_DISPLAY_NAME.getOrElse(`type`, `type`.getName)
+    val displayName = EntityToDisplayName.getOrElse(`type`, `type`.getName)
     meta.setDisplayName(ChatColor.RESET + displayName + " Spawner")
     is.setItemMeta(meta)
     is
