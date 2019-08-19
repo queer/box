@@ -21,7 +21,6 @@ class MobHarvestListener extends Listener {
   //noinspection VarCouldBeVal
   @Auto
   private var component: ComponentMobStacking = _
-  private val logger = getLogger
 
   @EventHandler
   def onMobDrop(event: EntityDropItemEvent): Unit = {
