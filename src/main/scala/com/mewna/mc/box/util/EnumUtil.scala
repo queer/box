@@ -13,14 +13,18 @@ import scala.util.Try
  */
 object EnumUtil {
   def valueOf[T <: Enum[T]](clazz: Class[T], names: Seq[String]): Option[T] =
-    names.find { name =>
-      Try(clazz.getDeclaredField(name)).isSuccess
-    }.map(Enum.valueOf(clazz, _))
+    names.iterator
+    .flatMap(name => Try(clazz.getDeclaredField(name)).toOption)
+    .filter(_.isEnumConstant)
+    .flatMap(field => Try(field.get(null).asInstanceOf[T]).toOption)
+    .find(_ => true) // Make sure we only find one
+
+
 
   def getAllMatching[T <: Enum[T]](clazz: Class[T], names: Seq[String]): Set[T] =
-    clazz.getEnumConstants
-      .filter(constant => names.contains(constant.name()))
-      .toSet
+    names.iterator
+    .flatMap(name => valueOf(clazz, Seq(name)))
+    .toSet
   
   def getMaterial(names: Seq[String]): Option[Material] = valueOf(classOf[Material], names)
   
