@@ -22,25 +22,29 @@ class CropHarvestListener extends Listener {
       // If the faction is player's faction, or the faction is the wild, we can replant
       val material = block.getType
       if(isCrop(material)) {
-        val blockAsAgeable = block.getBlockData.asInstanceOf[Ageable]
-        if(blockAsAgeable.getAge == blockAsAgeable.getMaximumAge) {
-          // If the interacted block is a full crop, we harvest
-          val itemsToDrop = getApplicableDrop(material).filter(_.getAmount != 0)
-          itemsToDrop.foreach(item => {
-            block.getWorld.dropItem(location, item)
-            block.setType(material)
-          })
+        block.getBlockData match {
+          case blockAsAgeable: Ageable =>
+            if (blockAsAgeable.getAge == blockAsAgeable.getMaximumAge) {
+              // If the interacted block is a full crop, we harvest
+              getApplicableDrops(material)
+                .filter(_.getAmount != 0)
+                .foreach(item => {
+                  block.getWorld.dropItem(location, item)
+                  block.setType(material)
+                })
+            }
+          case _ =>
         }
       }
     }
   }
 
   def isCrop(item: Material): Boolean = {
-    val crops = List(Material.WHEAT, Material.POTATOES, Material.CARROTS, Material.BEETROOTS)
-    crops.contains(item)
+    case _ @ (Material.WHEAT | Material.POTATOES | Material.CARROTS | Material.BEETROOTS) => true
+    case _ => false
   }
   //noinspection ScalaStyle
-  def getApplicableDrop(item: Material): Seq[ItemStack] = {
+  def getApplicableDrops(item: Material): Seq[ItemStack] = {
     val r = util.Random
     item match {
       case Material.WHEAT =>
