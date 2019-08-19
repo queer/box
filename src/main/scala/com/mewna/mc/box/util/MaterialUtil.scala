@@ -9,11 +9,11 @@ import org.bukkit.{DyeColor, Material}
  * @since 7/9/19.
  */
 object MaterialUtil {
-  val SPAWNER: Material = EnumUtil.getMaterial(Seq(
+  val Spawner: Material = EnumUtil.getMaterial(Seq(
     "MOB_SPAWNER",
     "SPAWNER"
   )).get
-  private val BEDS = EnumUtil.getAllMatching(classOf[Material],
+  private val Beds = EnumUtil.getAllMatching(classOf[Material],
     Seq(
       "BED",
       "WHITE_BED",
@@ -33,7 +33,7 @@ object MaterialUtil {
       "RED_BED",
       "BLACK_BED"
     ))
-  private val BANNERS = EnumUtil.getAllMatching(classOf[Material],
+  private val Banners = EnumUtil.getAllMatching(classOf[Material],
     Seq(
       "BANNER",
       "WHITE_BANNER",
@@ -54,25 +54,25 @@ object MaterialUtil {
       "BLACK_BANNER",
       "SHIELD"
     ))
-  private val FIREWORKS = EnumUtil.getAllMatching(classOf[Material],
+  private val Fireworks = EnumUtil.getAllMatching(classOf[Material],
     Seq(
       "FIREWORK",
       "FIREWORK_ROCKET",
       "FIREWORK_CHARGE",
       "FIREWORK_STAR"
     ))
-  private val LEGACY_SKULLS = EnumUtil.getAllMatching(classOf[Material],
+  private val LegacySkulls = EnumUtil.getAllMatching(classOf[Material],
     Seq(
       "SKULL",
       "SKULL_ITEM"))
-  private val LEATHER_ARMOR = EnumUtil.getAllMatching(classOf[Material],
+  private val LeatherArmor = EnumUtil.getAllMatching(classOf[Material],
     Seq(
       "LEATHER_HELMET",
       "LEATHER_CHESTPLATE",
       "LEATHER_LEGGINGS",
       "LEATHER_BOOTS"
     ))
-  private val MOB_HEADS = EnumUtil.getAllMatching(classOf[Material],
+  private val MobHeads = EnumUtil.getAllMatching(classOf[Material],
     Seq(
       "SKELETON_SKULL",
       "SKELETON_WALL_SKULL",
@@ -85,18 +85,18 @@ object MaterialUtil {
       "DRAGON_HEAD",
       "DRAGON_WALL_HEAD"
     ))
-  private val PLAYER_HEADS = EnumUtil.getAllMatching(classOf[Material],
+  private val PlayerHeads = EnumUtil.getAllMatching(classOf[Material],
     Seq("PLAYER_HEAD",
       "PLAYER_WALL_HEAD"))
   // includes TIPPED_ARROW which also has potion effects
-  private val POTIONS = EnumUtil.getAllMatching(classOf[Material],
+  private val Potions = EnumUtil.getAllMatching(classOf[Material],
     Seq(
       "POTION",
       "SPLASH_POTION",
       "LINGERING_POTION",
       "TIPPED_ARROW"
     ))
-  private val SIGN_POSTS = EnumUtil.getAllMatching(classOf[Material],
+  private val SignPosts = EnumUtil.getAllMatching(classOf[Material],
     Seq(
       "SIGN",
       "SIGN_POST",
@@ -107,7 +107,7 @@ object MaterialUtil {
       "OAK_SIGN",
       "SPRUCE_SIGN"
     ))
-  private val WALL_SIGNS = EnumUtil.getAllMatching(classOf[Material],
+  private val WallSigns = EnumUtil.getAllMatching(classOf[Material],
     Seq(
       "WALL_SIGN",
       "ACACIA_WALL_SIGN",
@@ -117,43 +117,37 @@ object MaterialUtil {
       "OAK_WALL_SIGN",
       "SPRUCE_WALL_SIGN"
     ))
-  
-  def isBed(material: Material): Boolean = BEDS.contains(material)
-  
-  def isBanner(material: Material): Boolean = BANNERS.contains(material)
-  
-  def isFirework(material: Material): Boolean = FIREWORKS.contains(material)
-  
-  def isLeatherArmor(material: Material): Boolean = LEATHER_ARMOR.contains(material)
+
+  def isBed(material: Material): Boolean = Beds.contains(material)
+
+  def isBanner(material: Material): Boolean = Banners.contains(material)
+
+  def isFirework(material: Material): Boolean = Fireworks.contains(material)
+
+  def isLeatherArmor(material: Material): Boolean = LeatherArmor.contains(material)
   
   def isMobHead(material: Material,
                 durability: Int): Boolean = {
-    if(MOB_HEADS.contains(material)) return true
-    LEGACY_SKULLS.contains(material) && durability != 3
+    if (MobHeads.contains(material)) return true
+    LegacySkulls.contains(material) && durability != 3
   }
   
   def isPlayerHead(material: Material,
                    durability: Int): Boolean = {
-    if(PLAYER_HEADS.contains(material)) return true
-    LEGACY_SKULLS.contains(material) && durability == 3
+    if (PlayerHeads.contains(material)) return true
+    LegacySkulls.contains(material) && durability == 3
   }
-  
-  def isPotion(material: Material): Boolean = POTIONS.contains(material)
-  
-  def isSignPost(material: Material): Boolean = SIGN_POSTS.contains(material)
-  
-  def isWallSign(material: Material): Boolean = WALL_SIGNS.contains(material)
+
+  def isPotion(material: Material): Boolean = Potions.contains(material)
+
+  def isSignPost(material: Material): Boolean = SignPosts.contains(material)
+
+  def isWallSign(material: Material): Boolean = WallSigns.contains(material)
   
   def isSign(material: Material): Boolean = isSignPost(material) || isWallSign(material)
-  
-  def isSkull(material: Material): Boolean = isPlayerHead(material,
-    -1) || isMobHead(material,
-    -1)
-  
-  def getColorOf(material: Material): DyeColor = {
-    for(color <- DyeColor.values) {
-      if(material.toString.contains(color.name)) return color
-    }
-    DyeColor.WHITE
-  }
+
+  def isSkull(material: Material): Boolean = isPlayerHead(material, -1) || isMobHead(material, -1)
+
+  def getColorOf(material: Material): DyeColor = DyeColor.values().find(color => material.toString.contains(color.name)).getOrElse(DyeColor.WHITE)
+
 }
