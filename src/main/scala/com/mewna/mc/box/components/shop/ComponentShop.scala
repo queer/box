@@ -40,14 +40,14 @@ class ComponentShop extends BoxedComponent {
       val name = plugin.getConfig.getString("shop.prices." + e + ".name")
       val buyPrice = plugin.getConfig.getDouble("shop.prices." + e + ".buy")
       val sellPrice = plugin.getConfig.getDouble("shop.prices." + e + ".sell")
-      var stack: Option[ItemStack] = Option.empty
+      var stack: Option[ItemStack] = None
       val mapKey = name.toLowerCase.replaceAll("\\s+", "")
       try
-        stack = Option(ItemUtil.get(mapKey))
+        stack = Some(ItemUtil.get(mapKey))
       catch {
         case _: Exception =>
           try
-            stack = Option(ItemUtil.get(e))
+            stack = Some(ItemUtil.get(e))
           catch {
             case e2: Exception =>
               plugin.getLogger.warning("Couldn't load shopitem at key '" + e + "' with name '" + name + "'!")

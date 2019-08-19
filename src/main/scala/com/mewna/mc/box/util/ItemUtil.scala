@@ -111,11 +111,11 @@ object ItemUtil {
   private def getByName(name: String): Option[ItemUtil.ItemData] = {
     val lower = name.toLowerCase()
     if(items.containsKey(lower)) {
-      Option(items.get(lower))
+      Some(items.get(lower))
     } else if(itemAliases.containsKey(lower)) {
-      Option(items.get(itemAliases.get(lower)))
+      Some(items.get(itemAliases.get(lower)))
     } else {
-      Option.empty
+      None
     }
   }
   
@@ -133,10 +133,10 @@ object ItemUtil {
     val data = lookup(item)
     for(elem <- items.asScala) {
       if(elem._2 == data) {
-        return Option(elem._1)
+        return Some(elem._1)
       }
     }
-    Option.empty
+    None
   }
   
   private def lookup(item: ItemStack) = {

@@ -18,13 +18,13 @@ object EnumUtil {
         val enumField = enumClass.getDeclaredField(name)
         if(enumField.isEnumConstant) {
           //noinspection ScalaStyle
-          return Option[T](enumField.get(null).asInstanceOf[T])
+          return Some(enumField.get(null).asInstanceOf[T])
         }
       } catch {
         case _@(_: NoSuchFieldException | _: IllegalAccessException) =>
       }
     }
-    Option.empty[T]
+    None
   }
   
   def getAllMatching[T <: Enum[_]](enumClass: Class[T], names: Seq[String]): util.Set[T] = {
