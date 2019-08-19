@@ -19,8 +19,6 @@ object EnumUtil {
     .flatMap(field => Try(field.get(null).asInstanceOf[T]).toOption)
     .find(_ => true) // Make sure we only find one
 
-
-
   def getAllMatching[T <: Enum[T]](clazz: Class[T], names: Seq[String]): Set[T] =
     names.iterator
     .flatMap(name => valueOf(clazz, Seq(name)))
