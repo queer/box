@@ -7,6 +7,10 @@ import org.bukkit.block.data.Ageable
 import org.bukkit.inventory.ItemStack
 import com.massivecraft.factions.{Board, FLocation, FPlayers}
 
+/**
+ * @author broman
+ * @since 8/19/19.
+ */
 class CropHarvestListener extends Listener {
   @EventHandler
   def onPlayerInteract(event: PlayerInteractEvent): Unit = {
