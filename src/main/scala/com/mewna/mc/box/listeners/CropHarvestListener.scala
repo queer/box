@@ -44,8 +44,10 @@ class CropHarvestListener extends Listener {
   }
 
   def isCrop(item: Material): Boolean = {
-    case _ @ (Material.WHEAT | Material.POTATOES | Material.CARROTS | Material.BEETROOTS) => true
-    case _ => false
+    item match {
+      case _ @ (Material.WHEAT | Material.POTATOES | Material.CARROTS | Material.BEETROOTS) => true
+      case _ => false
+    }
   }
   //noinspection ScalaStyle
   def getApplicableDrops(item: Material): Seq[ItemStack] = {

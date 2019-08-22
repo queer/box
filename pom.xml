@@ -29,6 +29,7 @@
         <vault-api.version>1.7</vault-api.version>
         <dekigokoro.version>1286af9585</dekigokoro.version>
         <paperlib.version>1.0.2</paperlib.version>
+        <factions.version>1.6.9.5-U0.4.9</factions.version>
     </properties>
 
     <repositories>
@@ -45,12 +46,6 @@
         <repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
-        </repository>
-
-        <repository>
-            <id>mvdw-software</id>
-            <name>MVdW Public Repositories</name>
-            <url>http://repo.mvdw-software.be/content/groups/public/</url>
         </repository>
 
         <repository>
@@ -103,7 +98,7 @@
         <dependency>
             <groupId>com.massivecraft</groupId>
             <artifactId>Factions</artifactId>
-            <version>1.6.9.5-U0.2.1-SNAPSHOT</version>
+            <version>${factions.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -221,7 +216,7 @@
                             <relocations>
                                 <relocation>
                                     <pattern>io.papermc.lib</pattern>
-                                    <shadedPattern>com.mewna.mc.box.paperlib</shadedPattern>
+                                    <shadedPattern>com.mewna.mc.box.libs.paperlib</shadedPattern>
                                 </relocation>
                             </relocations>
                             <artifactSet>
