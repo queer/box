@@ -33,7 +33,7 @@ class ComponentEconomy extends BoxedComponent {
   override def init(plugin: BoxPlugin): Boolean = {
     _dekigokoro = DekigokoroClient.create(_key)
     plugin.getServer.getServicesManager.register(classOf[Economy].asInstanceOf[Class[Object]],
-      BoxedPlugin.locateComponent(classOf[DekigokoroEconomy]), plugin, ServicePriority.Highest)
+      BoxedPlugin.locateComponent(classOf[DekigokoroEconomy]).get, plugin, ServicePriority.Highest)
     true
   }
   
