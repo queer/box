@@ -52,6 +52,11 @@
             <name>MVdW Public Repositories</name>
             <url>http://repo.mvdw-software.be/content/groups/public/</url>
         </repository>
+
+        <repository>
+            <id>factions-repo</id>
+            <url>http://ci.ender.zone/plugin/repository/everything/</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -92,6 +97,14 @@
             <groupId>com.github.MilkBowl</groupId>
             <artifactId>VaultAPI</artifactId>
             <version>${vault-api.version}</version>
+        </dependency>
+
+        <!-- Factions -->
+        <dependency>
+            <groupId>com.massivecraft</groupId>
+            <artifactId>Factions</artifactId>
+            <version>1.6.9.5-U0.2.1-SNAPSHOT</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- dekigokoro.io client -->
