@@ -49,7 +49,6 @@ class CropHarvestListener extends Listener {
       case _ => false
     }
   }
-  //noinspection ScalaStyle
   def getApplicableDrops(item: Material): Seq[ItemStack] = {
     val r = util.Random
     item match {

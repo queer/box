@@ -23,7 +23,7 @@ class ComponentMobStacking extends BoxedComponent {
   val colour = ChatColor.RED
   
   override def init(plugin: BoxPlugin): Boolean = {
-    //noinspection ScalaDeprecation,ScalaStyle
+    //noinspection ScalaDeprecation
     task = plugin.getServer.getScheduler.scheduleSyncRepeatingTask(plugin, () => {
       plugin.getServer.getWorlds.forEach(this.process)
     }, 20L, 20L)

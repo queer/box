@@ -72,7 +72,6 @@ class MobHarvestListener extends Listener {
     val r = new Random()
     // Formula taken from https://minecraft.gamepedia.com/Unbreaking
     val unbreakingCalculation = 100 / (unbreakingLevel + 1)
-    //noinspection ScalaStyle
     if(r.nextInt(100) < unbreakingCalculation) {
       // If the unbreakingCalculation is higher than the random number, the "unbreaking check" failed
       itemAsDamageable = item.getItemMeta.asInstanceOf[Damageable]
