@@ -1,9 +1,9 @@
 package com.mewna.mc.box.util
 
-import java.util
-
 import org.bukkit.entity.EntityType
 import org.bukkit.{Material, Statistic}
+
+import scala.util.Try
 
 /**
  * Adapted from https://github.com/EssentialsX/Essentials/blob/2.x/Essentials/src/com/earth2me/essentials/utils/EnumUtil.java
@@ -12,37 +12,17 @@ import org.bukkit.{Material, Statistic}
  * @since 7/9/19.
  */
 object EnumUtil {
-  def valueOf[T <: Enum[_]](enumClass: Class[T], names: Seq[String]): Option[T] = {
-    for(name <- names) {
-      try {
-        val enumField = enumClass.getDeclaredField(name)
-        if(enumField.isEnumConstant) {
-          //noinspection ScalaStyle
-          return Option[T](enumField.get(null).asInstanceOf[T])
-        }
-      } catch {
-        case _@(_: NoSuchFieldException | _: IllegalAccessException) =>
-      }
-    }
-    Option.empty[T]
-  }
-  
-  def getAllMatching[T <: Enum[_]](enumClass: Class[T], names: Seq[String]): util.Set[T] = {
-    val set = new util.HashSet[T]
-    for(name <- names) {
-      try {
-        val enumField = enumClass.getDeclaredField(name)
-        if(enumField.isEnumConstant) {
-          //noinspection ScalaStyle
-          set.add(enumField.get(null).asInstanceOf[T])
-        }
-      } catch {
-        case _@(_: NoSuchFieldException | _: IllegalAccessException) =>
-        
-      }
-    }
-    set
-  }
+  def valueOf[T <: Enum[T]](clazz: Class[T], names: Seq[String]): Option[T] =
+    names.iterator
+    .flatMap(name => Try(clazz.getDeclaredField(name)).toOption)
+    .filter(_.isEnumConstant)
+    .flatMap(field => Try(field.get(null).asInstanceOf[T]).toOption)
+    .find(_ => true) // Make sure we only find one
+
+  def getAllMatching[T <: Enum[T]](clazz: Class[T], names: Seq[String]): Set[T] =
+    names.iterator
+    .flatMap(name => valueOf(clazz, Seq(name)))
+    .toSet
   
   def getMaterial(names: Seq[String]): Option[Material] = valueOf(classOf[Material], names)
   

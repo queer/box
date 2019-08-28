@@ -38,14 +38,14 @@ object BoxedPlugin {
  * @since 7/10/19.
  */
 private class BoxedPlugin {
-  private var plugin: Option[_ <: BoxPlugin] = Option.empty
+  private var plugin: Option[_ <: BoxPlugin] = None
   private var graph: ScanResult = _
   private val components = mutable.HashSet[Class[_]]()
   private val commands = mutable.HashSet[Class[_]]()
   private val singletons = mutable.Map[Class[_], Any]()
   
   def scanAndInitFromPlugin[T <: BoxPlugin](p: T): Unit = {
-    plugin = Option(p)
+    plugin = Some(p)
     val cls = p.getClass
     val boxed = cls.getDeclaredAnnotation(classOf[Boxed])
     val logger = p.getLogger
@@ -222,9 +222,9 @@ private class BoxedPlugin {
           val instance = option.get.getConstructor().newInstance().asInstanceOf[T]
           injectComponents(instance, ctx)
           injectConfig(plugin.get, instance)
-          Option(instance)
+          Some(instance)
         } else {
-          Option.empty
+          None
         }
       }
     }
@@ -237,9 +237,9 @@ private class BoxedPlugin {
       val instance = option.get.getConstructor().newInstance().asInstanceOf[T]
       injectComponents(instance, ctx)
       injectConfig(plugin.get, instance)
-      Option(instance)
+      Some(instance)
     } else {
-      Option.empty
+      None
     }
   }
 }

@@ -30,7 +30,7 @@ class BoxedCommand(
     name, desc, usage, aliases.toList.asJava
   ) {
   private val subcommands = mutable.Map[String, Method]()
-  private var defaultSubcommand: Option[Method] = Option.empty
+  private var defaultSubcommand: Option[Method] = None
   
   def loadSubcommands(): BoxedCommand = {
     src.getDeclaredMethods.filter(e => e.isAnnotationPresent(classOf[Subcommand])).foreach(m => {
@@ -45,7 +45,7 @@ class BoxedCommand(
       })
       if(m.isAnnotationPresent(classOf[Default])) {
         if(defaultSubcommand.isEmpty) {
-          defaultSubcommand = Option(m)
+          defaultSubcommand = Some(m)
         } else {
           throw new IllegalStateException(f"Attempted to register default subcommand for command class ${src.getName}, "
             + "but it already has a default subcommand registered!")

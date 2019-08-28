@@ -27,7 +27,7 @@ class ShopGui(override val plugin: Box, val shop: ComponentShop, val itemName: S
       shopItem = shop.resolveItem(itemName)
     } catch {
       case e: Exception =>
-        shopItem = Option.empty
+        shopItem = None
         addButton(0, 13, getWithName(Material.BARRIER, ChatColor.RED + "Error loading shop! Please report this!"))
         e.printStackTrace()
         return
