@@ -87,6 +87,13 @@
             <version>${spigot-api.version}</version>
         </dependency>
 
+        <!-- Catnip -->
+        <dependency>
+            <groupId>com.mewna</groupId>
+            <artifactId>catnip</artifactId>
+            <version>1.3.3</version>
+        </dependency>
+
         <!-- Vault API -->
         <dependency>
             <groupId>com.github.MilkBowl</groupId>
@@ -227,6 +234,7 @@
                                     <exclude>com.github.MilkBowl:*</exclude>
                                 </excludes -->
                                 <includes>
+                                    <include>com.mewna:catnip:jar:1.3.3:*</include>
                                     <include>com.github.dekigokoro:java-client:*</include>
                                     <include>org.scala-lang:scala-library:*</include>
                                     <include>org.scala-lang:scala-reflect:*</include>
