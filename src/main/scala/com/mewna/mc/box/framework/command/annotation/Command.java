@@ -16,32 +16,32 @@ public @interface Command {
      * @return The name of the command. Required.
      */
     String name();
-    
+
     /**
      * @return The aliases of the command. Optional.
      */
     String[] aliases() default {};
-    
+
     /**
      * @return The description of the command. Optional.
      */
     String desc() default "A really cool command.";
-    
+
     /**
      * @return The usage of the command. Optional.
      */
     String usage() default "No usage specified.";
-    
+
     /**
      * @return The label of the command. Optional.
      */
     String label() default "box";
-    
+
     /**
      * @return The permission node of the command. Required.
      */
     String permissionNode();
-    
+
     /**
      * @return The no-permission message of the command. Optional.
      */

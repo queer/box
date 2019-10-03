@@ -5,9 +5,9 @@ import com.mewna.mc.box.framework.component.{Component, Single}
 import scala.collection.mutable.ArrayBuffer
 
 /**
- * @author amy
- * @since 7/10/19.
- */
+  * @author amy
+  * @since 7/10/19.
+  */
 @Single
 @Component
 class SignRegistry {

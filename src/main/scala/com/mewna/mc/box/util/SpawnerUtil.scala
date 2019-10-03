@@ -7,13 +7,13 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.BlockStateMeta
 
 /**
- * Adapted from
- * - https://github.com/EssentialsX/Essentials/blob/2.x/nms/NMSProvider/src/net/ess3/nms/SpawnerProvider.java
- * - https://github.com/EssentialsX/Essentials/blob/2.x/nms/UpdatedMetaProvider/src/net/ess3/nms/updatedmeta/BlockMetaSpawnerProvider.java
- *
- * @author amy
- * @since 7/9/19.
- */
+  * Adapted from
+  * - https://github.com/EssentialsX/Essentials/blob/2.x/nms/NMSProvider/src/net/ess3/nms/SpawnerProvider.java
+  * - https://github.com/EssentialsX/Essentials/blob/2.x/nms/UpdatedMetaProvider/src/net/ess3/nms/updatedmeta/BlockMetaSpawnerProvider.java
+  *
+  * @author amy
+  * @since 7/9/19.
+  */
 object SpawnerUtil {
   private val ENTITY_TO_DISPLAY_NAME: Map[EntityType, String] = Map(
     (EntityType.CAVE_SPIDER, "Cave Spider"),
@@ -27,9 +27,9 @@ object SpawnerUtil {
     (EntityType.WITHER, "Wither"),
     (EntityType.HORSE, "Horse")
   )
-  
+
   def setEntityType(is: ItemStack, `type`: EntityType): ItemStack = {
-    
+
     val bsm = is.getItemMeta.asInstanceOf[BlockStateMeta]
     val bs = bsm.getBlockState
     bs.asInstanceOf[CreatureSpawner].setSpawnedType(`type`)
@@ -37,13 +37,13 @@ object SpawnerUtil {
     is.setItemMeta(bsm)
     setDisplayName(is, `type`)
   }
-  
+
   def getEntityType(is: ItemStack): EntityType = {
     val bsm = is.getItemMeta.asInstanceOf[BlockStateMeta]
     val bs = bsm.getBlockState.asInstanceOf[CreatureSpawner]
     bs.getSpawnedType
   }
-  
+
   private def setDisplayName(is: ItemStack, `type`: EntityType) = {
     val meta = is.getItemMeta
     // TODO: How to resolve this deprecation warning?

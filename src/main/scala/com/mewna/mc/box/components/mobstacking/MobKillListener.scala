@@ -10,23 +10,25 @@ import org.bukkit.material.Colorable
 import org.bukkit.potion.PotionEffect
 
 /**
- * @author amy
- * @since 7/25/19.
- */
+  * @author amy
+  * @since 7/25/19.
+  */
 class MobKillListener extends Listener {
   //noinspection VarCouldBeVal
   @Auto
   private var component: ComponentMobStacking = _
-  
+
   @EventHandler
   def onKill(event: EntityDeathEvent): Unit = {
     val entity = event.getEntity
     val effects: util.Collection[PotionEffect] = entity.getActivePotionEffects
-    if(component.isStackable(entity)) {
+    if (component.isStackable(entity)) {
       val count = component.count(entity)
-      if(count > 1) {
+      if (count > 1) {
         val next = count - 1
-        val clone = entity.getWorld.spawnEntity(entity.getLocation, entity.getType).asInstanceOf[LivingEntity]
+        val clone = entity.getWorld
+          .spawnEntity(entity.getLocation, entity.getType)
+          .asInstanceOf[LivingEntity]
         entity match {
           case colorable: Colorable =>
             clone.asInstanceOf[Colorable].setColor(colorable.getColor)
@@ -38,7 +40,7 @@ class MobKillListener extends Listener {
           case _ =>
         }
         clone.addPotionEffects(effects)
-        if(next > 1) {
+        if (next > 1) {
           // Update the stack's name if needed
           clone.setCustomName(f"${component.colour}$next")
           clone.setCustomNameVisible(true)
@@ -49,7 +51,7 @@ class MobKillListener extends Listener {
           clone.setCustomNameVisible(false)
         }
         // Make sure the new stack still has any aggro drawn by the previous stack
-        if(event.getEntity.getKiller != null) {
+        if (event.getEntity.getKiller != null) {
           clone.damage(0, event.getEntity.getKiller)
         }
       } else {
