@@ -1,3 +1,10 @@
+# Discord information
+discord:
+  # The token you get from https://discordapp.com/developers/applications/me/
+  bot-token: ""
+  # The desired channel to act as the chat relay
+  channel-id: ""
+
 #
 #     .___      __   .__               __
 #   __| _/____ |  | _|__| ____   ____ |  | _____________  ____
