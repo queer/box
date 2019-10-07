@@ -9,9 +9,9 @@ import net.milkbowl.vault.economy.Economy
 import org.bukkit.plugin.ServicePriority
 
 /**
-  * @author amy
-  * @since 7/10/19.
-  */
+ * @author amy
+ * @since 7/10/19.
+ */
 @Single
 @Component
 class ComponentEconomy extends BoxedComponent {
@@ -27,30 +27,25 @@ class ComponentEconomy extends BoxedComponent {
   //noinspection VarCouldBeVal
   @Config("economy.currency.name.plural")
   private[this] var _currencyNamePlural: String = _
-
+  
   private var _dekigokoro: DekigokoroClient = _
-
+  
   override def init(plugin: BoxPlugin): Boolean = {
     _dekigokoro = DekigokoroClient.create(_key)
-    plugin.getServer.getServicesManager.register(
-      classOf[Economy].asInstanceOf[Class[Object]],
-      BoxedPlugin.locateComponent(classOf[DekigokoroEconomy]).get,
-      plugin,
-      ServicePriority.Highest
-    )
+    plugin.getServer.getServicesManager.register(classOf[Economy].asInstanceOf[Class[Object]],
+      BoxedPlugin.locateComponent(classOf[DekigokoroEconomy]).get, plugin, ServicePriority.Highest)
     true
   }
-
+  
   override def getName: String = "Economy"
-
-  override def getDesc: String =
-    "A dekigokoro.io-backed Minecraft server economy"
-
+  
+  override def getDesc: String = "A dekigokoro.io-backed Minecraft server economy"
+  
   def dekigokoro(): DekigokoroClient = _dekigokoro
-
+  
   def economyName(): String = _economyName
-
+  
   def currencyNameSingular(): String = _currencyNameSingular
-
+  
   def currencyNamePlural(): String = _currencyNamePlural
 }

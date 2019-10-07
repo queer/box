@@ -14,9 +14,9 @@ import org.bukkit.Bukkit.getLogger
 import scala.util.Random
 
 /**
-  * @author broman
-  * @since 8/14/19.
-  */
+ * @author broman
+ * @since 8/14/19.
+ */
 class MobHarvestListener extends Listener {
   //noinspection VarCouldBeVal
   @Auto
@@ -27,9 +27,9 @@ class MobHarvestListener extends Listener {
     // Check if the mob is a stack and proportionally drop items as a stack
     val entity = event.getEntity
     //noinspection TypeCheckCanBeMatch
-    if (entity.isInstanceOf[LivingEntity]) {
+    if(entity.isInstanceOf[LivingEntity]) {
       val le = entity.asInstanceOf[LivingEntity]
-      if (component.isStackable(entity)) {
+      if(component.isStackable(entity)) {
         // Only interested in augmenting mob stack drops
         val item = event.getItemDrop
         val count = component.count(le)
@@ -45,27 +45,25 @@ class MobHarvestListener extends Listener {
   def onPlayerInteractWithEntity(event: PlayerInteractAtEntityEvent): Unit = {
     // Apply proportionate damage to shears when harvesting a sheep stack
     val entity = event.getRightClicked
-    if (entity.getType == EntityType.SHEEP) {
+    if(entity.getType == EntityType.SHEEP) {
       val inventory = event.getPlayer.getInventory
       val item = if (event.getHand == EquipmentSlot.HAND) {
         inventory.getItemInMainHand
       } else {
         inventory.getItemInOffHand
       }
-      if (item.getType == Material.SHEARS) {
+      if(item.getType == Material.SHEARS) {
         val le = entity.asInstanceOf[LivingEntity]
-        for (_ <- 2 to component.count(le)) {
+        for(_ <- 2 to component.count(le)) {
           // We don't apply damage on the first shear since the game takes care of that.
-          val newItemMeta: ItemMeta =
-            applyDamage(item.asInstanceOf[ItemStack with Damageable], 1)
+          val newItemMeta: ItemMeta = applyDamage(item.asInstanceOf[ItemStack with Damageable], 1)
           item.setItemMeta(newItemMeta)
         }
       }
     }
   }
 
-  def applyDamage[T <: ItemStack with Damageable](item: T,
-                                                  damage: Int): ItemMeta = {
+  def applyDamage[T <: ItemStack with Damageable](item: T, damage: Int): ItemMeta = {
     // Applies damage to a given ItemStack, factoring in the Unbreaking enchantment
 
     //noinspection ScalaStyle
@@ -74,7 +72,7 @@ class MobHarvestListener extends Listener {
     val r = new Random()
     // Formula taken from https://minecraft.gamepedia.com/Unbreaking
     val unbreakingCalculation = 100 / (unbreakingLevel + 1)
-    if (r.nextInt(100) < unbreakingCalculation) {
+    if(r.nextInt(100) < unbreakingCalculation) {
       // If the unbreakingCalculation is higher than the random number, the "unbreaking check" failed
       itemAsDamageable = item.getItemMeta.asInstanceOf[Damageable]
       itemAsDamageable.setDamage(itemAsDamageable.getDamage + 1)

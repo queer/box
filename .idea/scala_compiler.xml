@@ -4,7 +4,7 @@
     <profile name="Maven 1" modules="box">
       <parameters>
         <parameter value="-dependencyfile" />
-        <parameter value="$PROJECT_DIR$/target/.scala_dependencies" />
+        <parameter value="C:\Users\broman\IdeaProjects\box\target/.scala_dependencies" />
       </parameters>
     </profile>
   </component>

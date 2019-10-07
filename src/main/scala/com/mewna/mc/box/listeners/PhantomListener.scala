@@ -9,18 +9,18 @@ import org.bukkit.event.entity.CreatureSpawnEvent
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason
 
 /**
-  * @author amy
-  * @since 7/9/19.
-  */
+ * @author amy
+ * @since 7/9/19.
+ */
 class PhantomListener extends Listener {
   //noinspection VarCouldBeVal
   @Auto
   private var plugin: Box = _
-
+  
   @EventHandler
   def onPhantomSpawn(event: CreatureSpawnEvent): Unit = {
     val entity = event.getEntity
-    if (entity.getType == EntityType.PHANTOM && event.getSpawnReason == SpawnReason.NATURAL) {
+    if(entity.getType == EntityType.PHANTOM && event.getSpawnReason == SpawnReason.NATURAL) {
       event.setCancelled(true)
       entity.setSilent(true)
       entity.setHealth(1)
@@ -28,11 +28,7 @@ class PhantomListener extends Listener {
       // This SHOULDN'T be an issue because I would have EXPECTED it to just pass a Runnable...
       // Whenever the Bukkit API updates to remove that method it should stop being an issue ig
       //noinspection ScalaDeprecation
-      Bukkit.getScheduler.scheduleSyncDelayedTask(
-        plugin,
-        () => entity.remove(),
-        1
-      )
+      Bukkit.getScheduler.scheduleSyncDelayedTask(plugin, () => entity.remove(), 1)
     }
   }
 }
